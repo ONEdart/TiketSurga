@@ -1,0 +1,89 @@
+﻿---
+// src/components/Ticket.astro
+---
+
+<section id="ticket" class="section" style="background: var(--white);">
+  <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+    <!-- Kiri: Judul besar -->
+    <div style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 8rem); font-weight: 700; letter-spacing: -0.05em; line-height: 0.9; text-transform: uppercase;">
+      <span class="reveal">THE</span><br />
+      <span class="reveal" style="display: inline-block; transition-delay: 0.15s;">TICKET</span>
+    </div>
+
+    <!-- Kanan: Tiket fisik dengan efek mouse -->
+    <div id="ticket-container" style="perspective: 600px; width: 100%;">
+      <div id="ticket-card" class="ticket-card reveal" style="transition-delay: 0.3s;">
+        <div class="ticket-title">TIKET SURGA™</div>
+        <div class="ticket-line">
+          <span class="ticket-label">DESTINATION</span>
+          <span class="ticket-value">HEAVEN</span>
+        </div>
+        <div class="ticket-line">
+          <span class="ticket-label">CLASS</span>
+          <span class="ticket-value">ETERNAL</span>
+        </div>
+        <div class="ticket-line">
+          <span class="ticket-label">VALIDITY</span>
+          <span class="ticket-value">∞</span>
+        </div>
+        <div class="ticket-line">
+          <span class="ticket-label">HOLDER</span>
+          <span class="ticket-value" style="font-weight: 400; font-family: var(--font-body);">—</span>
+        </div>
+        <div class="ticket-line">
+          <span class="ticket-label">TICKET NO.</span>
+          <span class="ticket-value" style="font-family: var(--font-body); font-weight: 400;">000001</span>
+        </div>
+        <div class="ticket-stub">◼ ◼ ◼ ◼</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// @ts-nocheck
+document.addEventListener('DOMContentLoaded', () => {
+  const card = document.getElementById('ticket-card');
+  const container = document.getElementById('ticket-container');
+  if (!card || !container) return;
+
+  let mouseX = 0,
+    mouseY = 0;
+  let targetRotateX = 0,
+    targetRotateY = 0;
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX = (e.clientX - centerX) / rect.width;
+    mouseY = (e.clientY - centerY) / rect.height;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    mouseX = 0;
+    mouseY = 0;
+  });
+
+  function animateTicket() {
+    targetRotateY = mouseX * 8;
+    targetRotateX = -mouseY * 8;
+    card.style.transform =
+      'rotateY(' + targetRotateY + 'deg) rotateX(' + targetRotateX + 'deg)';
+    requestAnimationFrame(animateTicket);
+  }
+  animateTicket();
+});
+</script>
+
+<style>
+@media (max-width: 768px) {
+  #ticket .container {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  #ticket .ticket-card {
+    max-width: 100% !important;
+  }
+}
+</style>

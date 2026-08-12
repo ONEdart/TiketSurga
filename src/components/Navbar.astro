@@ -1,0 +1,55 @@
+﻿---
+// src/components/Navbar.astro
+---
+
+<nav
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  "
+>
+  <div style="font-family: var(--font-display); font-weight: 700; font-size: clamp(0.8rem, 2vw, 1.1rem); letter-spacing: -0.02em;">
+    TIKET SURGA™
+  </div>
+  <button
+    data-menu-toggle
+    style="
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--black);
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--black);
+      transition: background 0.2s;
+    "
+    onmouseover="this.style.background='#000'; this.style.color='#fff';"
+    onmouseout="this.style.background='transparent'; this.style.color='#000';"
+  >
+    MENU
+  </button>
+</nav>
+
+<!-- Fullscreen Menu Overlay -->
+<div data-menu-overlay class="menu-overlay">
+  <ul class="menu-list">
+    <li><a data-menu-link href="#hero"><span class="menu-number">01</span> HOME</a></li>
+    <li><a data-menu-link href="#ticket"><span class="menu-number">02</span> THE TICKET</a></li>
+    <li><a data-menu-link href="#promises"><span class="menu-number">03</span> THE PROMISE</a></li>
+    <li><a data-menu-link href="#availability"><span class="menu-number">04</span> AVAILABILITY</a></li>
+    <li><a data-menu-link href="#final"><span class="menu-number">05</span> GET YOUR TICKET</a></li>
+  </ul>
+</div>

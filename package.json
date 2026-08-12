@@ -1,0 +1,13 @@
+{
+  "name": "tiket-surga",
+  "version": "1.0.0",
+  "description": "TIKET SURGA™ — Limited Edition",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^4.0.0"
+  }
+}

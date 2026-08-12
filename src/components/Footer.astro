@@ -1,0 +1,28 @@
+﻿---
+// src/components/Footer.astro
+---
+
+<footer style="
+  background: var(--black);
+  color: var(--white);
+  padding: 3rem 1.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+">
+  <div class="container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+    <div style="font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 700; letter-spacing: -0.03em;">
+      TIKET SURGA™
+    </div>
+    <div style="font-family: var(--font-display); font-size: clamp(0.9rem, 2vw, 1.2rem); letter-spacing: 0.05em; opacity: 0.5;">
+      THE FINAL DESTINATION AWAITS.
+    </div>
+    <div style="display: flex; justify-content: space-between; font-size: 0.65rem; opacity: 0.3; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+      <span>01</span>
+      <span>© 2026</span>
+    </div>
+    <div style="font-size: 0.55rem; opacity: 0.2; letter-spacing: 0.05em; max-width: 400px; line-height: 1.6;">
+      * Tidak menjamin keselamatan jiwa.<br />
+      * Tidak dapat diuangkan kembali.<br />
+      * Keberangkatan bersifat final.
+    </div>
+  </div>
+</footer>

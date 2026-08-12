@@ -1,0 +1,66 @@
+﻿---
+// src/components/Availability.astro
+---
+
+<section id="availability" class="section section--dark" style="justify-content: center; text-align: center;">
+  <div class="container" style="padding: 0 1rem;">
+    <div style="font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.4; margin-bottom: 1.5rem;">
+      LIMITED EDITION
+    </div>
+
+    <div style="font-family: var(--font-display); font-size: clamp(2.5rem, 10vw, 10rem); font-weight: 700; letter-spacing: -0.05em; line-height: 0.9;">
+      <span class="reveal">ONLY</span><br />
+      <span class="reveal" style="transition-delay: 0.15s;" id="total-tickets">100</span><br />
+      <span class="reveal" style="transition-delay: 0.3s;">TICKETS</span>
+    </div>
+
+    <div style="margin-top: 3rem;">
+      <div style="font-size: clamp(1.2rem, 3vw, 1.6rem); font-family: var(--font-display); letter-spacing: -0.02em;">
+        <span id="counter-display">0</span> <span style="font-size: 0.7rem; opacity: 0.5;">REMAIN</span>
+      </div>
+      <div class="progress-track" style="max-width: 300px;">
+        <div class="progress-fill" id="progress-fill" style="width: 73%;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// @ts-nocheck
+document.addEventListener('DOMContentLoaded', () => {
+  const counterEl = document.getElementById('counter-display');
+  const target = 73;
+  let current = 0;
+  let interval = null;
+
+  function startCounter() {
+    if (interval) return;
+    interval = setInterval(() => {
+      const increment = Math.floor(Math.random() * 3) + 1;
+      current = Math.min(current + increment, target);
+      if (counterEl) counterEl.textContent = String(current);
+      if (current >= target) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }, 80);
+  }
+
+  const section = document.getElementById('availability');
+  if (section) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            startCounter();
+            observer.unobserve(section);
+            break;
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(section);
+  }
+});
+</script>

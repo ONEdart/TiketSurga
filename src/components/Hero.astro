@@ -1,0 +1,57 @@
+﻿---
+// src/components/Hero.astro
+---
+
+<section id="hero" class="section" style="justify-content: center; padding-top: 5rem; min-height: 100vh; position: relative; overflow: visible;">
+  <div class="container" style="display: flex; flex-direction: column; gap: 1rem; padding: 0 0.5rem;">
+    <div style="display: flex; flex-direction: column; gap: 0.2rem; width: 100%;">
+      <div style="
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(2rem, 6vw, 11rem);
+        line-height: 0.85;
+        letter-spacing: -0.03em;
+        text-transform: uppercase;
+        width: 100%;
+        overflow: visible;
+      ">
+        <div class="reveal-clip is-visible" style="transition-delay: 0.3s; display: block; white-space: nowrap; overflow: visible; width: 100%;">THE FINAL</div>
+        <div class="reveal-clip is-visible" style="transition-delay: 0.6s; display: block; white-space: nowrap; overflow: visible; width: 100%;">DESTINATION</div>
+        <div class="reveal-clip is-visible" style="transition-delay: 0.9s; display: block; white-space: nowrap; overflow: visible; width: 100%;">AWAITS.</div>
+      </div>
+      <div style="
+        margin-top: 2rem;
+        font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 1.5rem;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      ">
+        <span>LIMITED EDITION · 2026</span>
+        <span style="font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 1.2rem);">Rp 1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <span>↓</span>
+    <span>SCROLL TO ENTER</span>
+  </div>
+</section>
+
+<style>
+@media (max-width: 480px) {
+  #hero .reveal-clip {
+    white-space: normal !important;
+    word-break: keep-all;
+  }
+}
+</style>
